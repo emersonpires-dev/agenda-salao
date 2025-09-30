@@ -1,12 +1,15 @@
-// components/ServiceCard.tsx
+// components/ServiceCard.tsx (versão atualizada)
+
+import Link from 'next/link';
 
 type ServiceProps = {
+  id: number; // <-- Recebe o ID
   name: string;
   price: number;
   duration: number; // duração em minutos
 };
 
-export default function ServiceCard({ name, price, duration }: ServiceProps) {
+export default function ServiceCard({ id, name, price, duration }: ServiceProps) {
   return (
     <div className="bg-gray-800 p-4 rounded-lg flex justify-between items-center shadow-md border border-gray-700">
       <div>
@@ -16,9 +19,11 @@ export default function ServiceCard({ name, price, duration }: ServiceProps) {
           R$ {price.toFixed(2).replace('.', ',')}
         </p>
       </div>
-      <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
-        Agendar
-      </button>
+      <Link href={`/agendar/${id}`}> {/* <-- Transforma o botão em um link dinâmico */}
+        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Agendar
+        </button>
+      </Link>
     </div>
   );
 }

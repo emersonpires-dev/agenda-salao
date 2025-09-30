@@ -22,6 +22,7 @@ export default function HomePage() {
         {servicesData.map((service) => (
           <ServiceCard
             key={service.id}
+            id={service.id}
             name={service.name}
             price={service.price}
             duration={service.duration}
